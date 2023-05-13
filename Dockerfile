@@ -1,8 +1,8 @@
 FROM gcr.io/kaggle-gpu-images/python:v131
 
-COPY ./inputs /kaggle/working/inputs
-RUN python ./kaggle/working/inputs/unzipall.py
-RUN rm ./kaggle/working/inputs/*.zip
+COPY ./input /kaggle/input
+RUN python ./kaggle/input/unzipall.py
+RUN rm ./kaggle/input/*.zip
 
 RUN apt-get update
 RUN apt-get install -y \

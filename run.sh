@@ -2,8 +2,8 @@
 
 docker run --rm -it \
     --gpus '"device=2"' \
-    -v $PWD/deps/colmap:/kaggle/working/inputs/colmap \
-    -v $PWD/deps/pycolmap:/kaggle/working/inputs/pycolmap \
+    -v $PWD/deps/colmap:/kaggle/input/colmap \
+    -v $PWD/deps/pycolmap:/kaggle/input/pycolmap \
     -v $PWD/scripts:/kaggle/working/scripts \
     -p 9999:9999 \
     rick_imc2023:latest \
