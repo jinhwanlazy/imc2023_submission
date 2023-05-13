@@ -2,6 +2,7 @@ FROM gcr.io/kaggle-gpu-images/python:v131
 
 COPY ./inputs /kaggle/working/inputs
 RUN python ./kaggle/working/inputs/unzipall.py
+RUN rm ./kaggle/working/inputs/*.zip
 
 RUN apt-get update
 RUN apt-get install -y \
@@ -26,6 +27,8 @@ RUN apt-get install -y \
     libcgal-dev \
     libceres-dev
 
-COPY ./deps /kaggle/working/deps
-WORKDIR /kaggle/working/deps/colmap/build
-RUN cmake .. -GNinja -DCMAKE_CUDA_ARCHITECTURES=all-major && ninja && ninja install
+RUN conda install -y --force-reinstall jupyterlab
+RUN jupyter labextension install @axlair/jupyterlab_vim
+
+WORKDIR /kaggle/working
+
